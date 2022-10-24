@@ -1,0 +1,70 @@
+
+=== feedback-app-main
+
+1.   npx create-react-app   feedback-app-main  --use-npm
+
+        --use-npm means use npm insead of yarn
+        
+          npm start :       starts the development server
+          
+          npm run build :   bundles the app into static files for production
+          
+          npm run test:     starts the test runner
+          
+          npm run eject:    removes this tool and copies build dependencies, 
+                            config files and app dependecies into the app directory:
+                            If you do this you cant go back
+                            
+                            
+ch02 React Basics and JSX ( Javascript XML) video
+
+    React 18  Though it works the  ReactDOM.render is no longer supported
+                           use createRoot instead
+                           Until you switch your app will behave as if it is running React 17
+                           
+      In  index.js
+      
+          const root = ReactDOM.createRoot(document.getElementById('root'));
+          root.render(<App />);
+          
+          
+          This also means the import for ReactDOM must change
+          
+          
+          import ReactDOM from 'react-dom/client';     instead of   import ReactDOM from 'react-dom' 
+                           
+                           
+     For React18 the index.js  file will be
+     
+  import React from 'react';
+  import ReactDOM from 'react-dom/client';
+  import App from './App';
+
+  //  Old Pre React 18 syntax
+  // ReactDOM.render(<h1>My App</h1>, document.getElementById('root'));
+  // ReactDOM.render(<App />, document.getElementById('root'));
+
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(<App />);
+  
+  BETTER STILL
+  
+  
+  root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+  
+  
+  
+);
+  
+  
+  
+                           
+                           
+                                                    
+                            
+                            
+        
+        
