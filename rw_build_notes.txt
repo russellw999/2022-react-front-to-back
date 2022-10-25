@@ -54,10 +54,7 @@ ch02 React Basics and JSX ( Javascript XML) video
   <React.StrictMode>
     <App />
   </React.StrictMode>
-  
-  
-  
-);
+   );
   
   
   
