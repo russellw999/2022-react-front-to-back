@@ -1,8 +1,10 @@
 import React from 'react';
 
-const Header = ({ text }) => {
+const Header = ({ text, bgColor, textColor }) => {
+  const HeaderStyles = { backgroundColor: bgColor, color: textColor };
+
   return (
-    <header>
+    <header style={HeaderStyles}>
       <div>
         <h2>{text}</h2>
       </div>
