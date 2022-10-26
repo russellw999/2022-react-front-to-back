@@ -11,10 +11,11 @@ const FeedbackList = ({ feedback, handleDelete }) => {
 
   return (
     <Fragment>
-      <div className="feedback-list">FeedbackList</div>
-      {feedback.map((item, index) => (
-        <FeedbackItem key={item.id} item={item} handleDelete={handleDelete} />
-      ))}
+      <div className="feedback-list">
+        {feedback.map((item, index) => (
+          <FeedbackItem key={item.id} item={item} handleDelete={handleDelete} />
+        ))}
+      </div>
     </Fragment>
   );
 };
