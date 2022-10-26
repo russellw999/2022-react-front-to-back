@@ -1,9 +1,11 @@
 import React, { useState, Fragment } from 'react';
+import RatingSelect from './RatingSelect';
 import Card from './shared/Card';
 import Button from './shared/Button';
 
 const FeedbackForm = () => {
   const [text, setText] = useState('');
+  const [rating, setRating] = useState(10);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState('Hello');
 
@@ -23,12 +25,18 @@ const FeedbackForm = () => {
     // console.log(e.target.value);
   };
 
+  const handleSelectRating = (rating) => {
+    console.log(`handleSelectRating : ${rating}`);
+    setRating(rating);
+  };
+
   return (
     <Fragment>
       <Card>
         <form>
           <h2>How would you rate your service with us?</h2>
-          {/*/ @todo - rating select component*/}
+          <RatingSelect select={(rating) => handleSelectRating(rating)} />
+
           <div className="input-group">
             <input
               onChange={handleTextChange}
