@@ -1,3 +1,5 @@
+import AboutPage from './components/pages/AboutPage';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import React, { Fragment, useState } from 'react';
 import Header from './components/Header';
@@ -28,12 +30,16 @@ const App = () => {
 
   return (
     <Fragment>
-      <Header />
-      <div className="container">
-        <FeedbackForm handleAdd={addFeedback} />
-        <FeedbackStats feedback={feedback} />
-        <FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
-      </div>
+      <Router>
+        <Header />
+        <div className="container">
+          <FeedbackForm handleAdd={addFeedback} />
+          <FeedbackStats feedback={feedback} />
+          <FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
+
+          <Route path="/about" component={AboutPage} />
+        </div>
+      </Router>
     </Fragment>
   );
 };
