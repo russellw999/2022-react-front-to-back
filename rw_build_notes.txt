@@ -56,8 +56,14 @@ ch02 React Basics and JSX ( Javascript XML) video
   </React.StrictMode>
    );
   
-    # pacge to generate unique IDs
-  ch04  npm i uuid     
+    # package to generate unique IDs
+  ch04  npm i uuid    
+
+  ch04 Fade Animation with Framer Motion
+
+  npm i framer-motion@4.1.17
+
+
                            
                            
                                                     
