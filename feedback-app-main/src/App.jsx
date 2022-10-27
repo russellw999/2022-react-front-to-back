@@ -7,6 +7,7 @@ import Header from './components/Header';
 import FeedbackForm from './components/FeedbackForm';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackList from './components/FeedbackList';
+import Post from './components/Post';
 
 import FeedbackData from './data/FeedbackData';
 import PropTypes from 'prop-types';
@@ -50,6 +51,7 @@ const App = () => {
               }
             ></Route>
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/post/:id/:name" element={<Post />} />
           </Routes>
           <AboutIconLink />
         </div>
