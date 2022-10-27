@@ -1,6 +1,8 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-const FeedbackStats = ({ feedback }) => {
+import React, { Fragment, useContext } from 'react';
+import FeedbackContext from '../context/FeedbackContext';
+const FeedbackStats = () => {
+  const { feedback } = useContext(FeedbackContext);
+
   // calculate ratings average
   let average =
     feedback.reduce((acc, cur) => {
@@ -17,10 +19,6 @@ const FeedbackStats = ({ feedback }) => {
       </div>
     </Fragment>
   );
-};
-
-FeedbackStats.propTypes = {
-  feedback: PropTypes.array.isRequired,
 };
 
 export default FeedbackStats;
