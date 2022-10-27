@@ -7,6 +7,7 @@ import Header from './components/Header';
 import FeedbackForm from './components/FeedbackForm';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackList from './components/FeedbackList';
+import { FeedbackProvider } from './context/FeedbackContext';
 
 import FeedbackData from './data/FeedbackData';
 import PropTypes from 'prop-types';
@@ -31,29 +32,31 @@ const App = () => {
 
   return (
     <Fragment>
-      <Router>
-        <Header />
-        <div className="container">
-          <Routes>
-            <Route
-              exact
-              path="/"
-              element={
-                <Fragment>
-                  <FeedbackForm handleAdd={addFeedback} />
-                  <FeedbackStats feedback={feedback} />
-                  <FeedbackList
-                    feedback={feedback}
-                    handleDelete={deleteFeedback}
-                  />
-                </Fragment>
-              }
-            ></Route>
-            <Route path="/about" element={<AboutPage />} />
-          </Routes>
-          <AboutIconLink />
-        </div>
-      </Router>
+      <FeedbackProvider>
+        <Router>
+          <Header />
+          <div className="container">
+            <Routes>
+              <Route
+                exact
+                path="/"
+                element={
+                  <Fragment>
+                    <FeedbackForm handleAdd={addFeedback} />
+                    <FeedbackStats feedback={feedback} />
+                    <FeedbackList
+                      feedback={feedback}
+                      handleDelete={deleteFeedback}
+                    />
+                  </Fragment>
+                }
+              ></Route>
+              <Route path="/about" element={<AboutPage />} />
+            </Routes>
+            <AboutIconLink />
+          </div>
+        </Router>
+      </FeedbackProvider>
     </Fragment>
   );
 };
