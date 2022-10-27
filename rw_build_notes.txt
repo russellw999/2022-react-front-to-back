@@ -56,8 +56,8 @@ ch02 React Basics and JSX ( Javascript XML) video
   </React.StrictMode>
    );
   
-  
-  
+    # pacge to generate unique IDs
+  ch04  npm i uuid     
                            
                            
                                                     
