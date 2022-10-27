@@ -33,12 +33,23 @@ const App = () => {
       <Router>
         <Header />
         <div className="container">
-          <Route exact path="/">
-            <FeedbackForm handleAdd={addFeedback} />
-            <FeedbackStats feedback={feedback} />
-            <FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
-          </Route>
-          <Route path="/about" component={AboutPage} />
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <Fragment>
+                  <FeedbackForm handleAdd={addFeedback} />
+                  <FeedbackStats feedback={feedback} />
+                  <FeedbackList
+                    feedback={feedback}
+                    handleDelete={deleteFeedback}
+                  />
+                </Fragment>
+              }
+            ></Route>
+            <Route path="/about" element={<AboutPage />} />
+          </Routes>
         </div>
       </Router>
     </Fragment>
