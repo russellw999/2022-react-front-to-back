@@ -25,6 +25,15 @@ export const FeedbackProvider = ({ children }) => {
     setFeedback([newFeedback, ...feedback]);
   };
 
+  // Update feedbackItem
+  const updateFeedback = async (id, updItem) => {
+    //  console.log(id, updItem);
+    // NOTE: no need to spread data and item
+    setFeedback(
+      feedback.map((item) => (item.id === id ? { ...item, ...updItem } : item))
+    );
+  };
+
   // Delete feedback
   const deleteFeedback = (id) => {
     // console.log('App ', id);
@@ -33,7 +42,7 @@ export const FeedbackProvider = ({ children }) => {
     }
   };
 
-  // set item to be updated
+  // Set item to be updated
   const editFeedback = (item) => {
     setFeedbackEdit({
       item,
@@ -45,10 +54,11 @@ export const FeedbackProvider = ({ children }) => {
     <FeedbackContext.Provider
       value={{
         feedback,
+        feedbackEdit,
         addFeedback,
         deleteFeedback,
+        updateFeedback,
         editFeedback,
-        feedbackEdit,
       }}
     >
       {children}
