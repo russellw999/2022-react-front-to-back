@@ -64,6 +64,25 @@ ch02 React Basics and JSX ( Javascript XML) video
   npm i framer-motion@4.1.17
 
 
+  == ch06 deploy to Netlify
+
+      npm run build     // create optimised productuion build
+
+      npm i -g server
+         
+          serve -s build     // serves what we have in our static build on localhost:5000
+
+
+
+     To use Netlify to serve from GitHub
+     Anotehr site is   versel
+
+
+
+
+
+
+
                            
                            
                                                     
