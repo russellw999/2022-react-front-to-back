@@ -1,13 +1,14 @@
 import { createContext, useState, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [feedback, setFeedback] = useState([]);
-  const serverPort = 5000;
-  const baseUrl = `http://localhost:${serverPort}/feedback?_sort=id&_order=desc`;
+
+  // const baseUrl = `http://localhost:${serverPort}/feedback?_sort=id&_order=desc`;
+  // baseUrl after defining PROXY in package.json
+  const baseUrl = `/feedback?_sort=id&_order=desc`;
 
   const [feedbackEdit, setFeedbackEdit] = useState({
     item: {},
@@ -29,13 +30,18 @@ export const FeedbackProvider = ({ children }) => {
   };
 
   // Add feedback
-  const addFeedback = (newFeedback) => {
-    newFeedback.id = uuidv4();
-    console.log(`FeedbackContextProvider - addFeedback - newFeedback`);
-    console.log(newFeedback);
+  const addFeedback = async (newFeedback) => {
+    const response = await fetch('/feedback', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newFeedback),
+    });
 
     // add to our app level state
-    setFeedback([newFeedback, ...feedback]);
+    const data = await response.json();
+    setFeedback([data, ...feedback]);
   };
 
   // Update feedbackItem

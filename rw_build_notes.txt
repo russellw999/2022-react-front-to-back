@@ -97,6 +97,12 @@ ch02 React Basics and JSX ( Javascript XML) video
 
       npm run dev
 
+   Add a Proxy  for http://localhost:5000
+
+   in package.json add
+   "proxy": "http://localhost:5000"
+
+
 
       
 
