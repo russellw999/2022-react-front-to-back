@@ -1,9 +1,19 @@
-function App() {
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Fragment } from 'react';
+import Navbar from './components/layout/Navbar';
+
+const App = () => {
   return (
-    <div className="bg-purple-500">
-      <h1 className="text-xl">Hello World</h1>
-    </div>
+    <Router>
+      <Fragment>
+        <div className="flex flex-col justify-between h-screen">
+          <Navbar />
+
+          <main>Content</main>
+        </div>
+      </Fragment>
+    </Router>
   );
-}
+};
 
 export default App;

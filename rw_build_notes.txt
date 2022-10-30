@@ -187,6 +187,9 @@ module.exports = {
 9.   npm start
 
 
+10.  npm i react-router-dom react-icons
+
+
 
 
 
