@@ -38,11 +38,6 @@ const FeedbackForm = () => {
     // console.log(e.target.value);
   };
 
-  const handleSelectRating = (rating) => {
-    console.log(`handleSelectRating : ${rating}`);
-    setRating(rating);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(`FeedbackForm handleSubmit`);
@@ -57,6 +52,9 @@ const FeedbackForm = () => {
       } else {
         addFeedback(newFeedback);
       }
+      // NOTE: reset to default state after submission
+      setBtnDisabled(true); // 👈  add this line to reset disabled
+      setRating(10); //👈 add this line to set rating back to 10
       setText('');
     }
   };
@@ -66,7 +64,7 @@ const FeedbackForm = () => {
       <Card>
         <form onSubmit={handleSubmit}>
           <h2>How would you rate your service with us?</h2>
-          <RatingSelect select={(rating) => handleSelectRating(rating)} />
+          <RatingSelect select={setRating} selected={rating} />
 
           <div className="input-group">
             <input
