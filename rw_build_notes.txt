@@ -116,11 +116,15 @@ ch02 React Basics and JSX ( Javascript XML) video
 
        cd github-find
        
-   Course notes specify this install of Craco    
+   Course notes specify  install of specific version of Taliwind and Craco    
+          https://v2.tailwindcss.com/docs/guides/create-react-app
+
           npm install -D tailwindcss@npm:@tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
-          npm install @craco/craco     -- does not want to install
+          npm install @craco/craco     -- install fails
 
    However instructions on Tailwind.css look more up to date
+
+       https://tailwindcss.com/docs/configuration
 
        Install tailwindcss and its peer dependencies via npm, and then run the init command to generate both tailwind.config.js and postcss.config.js.   
 
@@ -158,6 +162,7 @@ module.exports = {
 
 
   6.    Start using Tailwind in your project
+        npm start
 
   App.js
   export default function App() {
@@ -177,7 +182,7 @@ module.exports = {
        plugins: [require('daisyui')]
 
   npm i postcss-flexbugs-fixes
-  npm -  postcss-preset-env
+  npm i postcss-preset-env
 
 9.   npm start
 
