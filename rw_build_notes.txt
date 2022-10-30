@@ -77,6 +77,30 @@ ch02 React Basics and JSX ( Javascript XML) video
      To use Netlify to serve from GitHub
      Anotehr site is   versel
 
+ == ch07   
+
+ Install json server    npm - json-server
+
+   In package.json   create script
+
+     "server": "json-server --watch  db.json --port 5000"
+
+  create db.json  in root folder
+
+  Install concurrently and add script to package.json to start the app and server concurrently
+
+     npm i concurrently
+
+      "dev": "concurrently \"npm run server\" \"npm start\""
+
+      now can use:
+
+      npm run dev
+
+
+      
+
+
 
 
 
