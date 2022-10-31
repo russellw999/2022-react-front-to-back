@@ -1,40 +1,27 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useContext } from 'react';
 import UserItem from './UserItem';
 import Spinner from '../layout/Spinner';
+import GithubContext from '../../context/GithubContext';
 
 const UserResults = () => {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { users, loading, fetchUsers } = useContext(GithubContext);
 
   useEffect(() => {
     fetchUsers();
   }, []);
 
-  const fetchUsers = async () => {
-    const response = await fetch(`${process.env.REACT_APP_GITHUB_URL}/users`, {
-      headers: {
-        Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
-      },
-    });
-
-    const data = await response.json();
-    //console.log(data);
-    setUsers(data);
-    setLoading(false);
-  };
+  console.log(users);
 
   if (!loading) {
     return (
-      <Fragment>
-        <div className="grid grid-cols-1 gap-8 xl:grod-cols-4 lg:grid-cols-3 md:grid-cols-2">
-          {users.map((user) => (
-            <UserItem key={user.id} user={user} />
-          ))}
-        </div>
-      </Fragment>
+      <div className="grid grid-cols-1 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2">
+        {users.map((user) => (
+          <UserItem key={user.id} user={user} />
+        ))}
+      </div>
     );
   } else {
-    <Spinner />;
+    return <Spinner />;
   }
 };
 
