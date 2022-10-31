@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useState } from 'react';
+import Spinner from '../layout/Spinner';
 
 const UserResults = () => {
   const [users, setUsers] = useState([]);
@@ -32,7 +33,7 @@ const UserResults = () => {
       </Fragment>
     );
   } else {
-    <h3>Loading.....</h3>;
+    <Spinner />;
   }
 };
 
