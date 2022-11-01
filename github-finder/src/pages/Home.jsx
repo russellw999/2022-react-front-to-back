@@ -1,13 +1,13 @@
 import { Fragment } from 'react';
 import UserResults from '../components/users/UserResults';
+import UserSearch from '../components/users/UserSearch';
 
 const Home = () => {
   return (
     <Fragment>
       <div>
-        {/* SEARCH COMPONENT */}
+        <UserSearch />
         <UserResults />
-        {process.env.REACT_APP_GITHUB_TOKEN}
       </div>
     </Fragment>
   );
