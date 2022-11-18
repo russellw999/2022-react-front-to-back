@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 const UserItem = ({ user: { login, avatar_url } }) => {
+  console.log(`UserItem login: ${login}`);
   return (
     <div className="card shadow-md compact side bg-base-100">
       <div className="flex-row items-center space-x-4 card-body">

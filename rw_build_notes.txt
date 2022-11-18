@@ -103,7 +103,7 @@ ch02 React Basics and JSX ( Javascript XML) video
    "proxy": "http://localhost:5000"
 
 
-==== Github Tailwind Project
+==== Github Finder Tailwind Project
 
  Setup
 
@@ -190,10 +190,28 @@ module.exports = {
 10.  npm i react-router-dom react-icons
 
 
-== ch09 Working with Github autoprefixer
+== ch09 Working with Github API autoprefixer
 
+Postman
+
+   https://api.github.com
+
+   https://api.github.com/search/users?q=brad
+
+   create Token to increase the rate limit ( it appears in current Github this has no effect )
+
+     Github -> Settings -> Developer Settings Personal Access Token
+
+     This should not be necesary as the rate limit is 1,000 requests per hour per repository
+     for a normal user.
+
+  *** No in fact i got a rate limit exceeded
+
+      https://api.github.com/user?russellw999
+
+    
 Personal Access Token
-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
+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
 
 
 

@@ -3,6 +3,7 @@ import UserItem from './UserItem';
 import Spinner from '../layout/Spinner';
 import GithubContext from '../../context/github/GithubContext';
 
+// The User list component
 const UserResults = () => {
   const { users, loading } = useContext(GithubContext);
 

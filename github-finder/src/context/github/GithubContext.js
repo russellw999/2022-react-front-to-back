@@ -13,6 +13,7 @@ export const GithubProvider = ({ children }) => {
   const initialState = {
     users: [],
     user: {},
+    repos: [],
     loading: false,
   };
 
@@ -28,12 +29,14 @@ export const GithubProvider = ({ children }) => {
     });
 
     console.log(params);
-    const response = await fetch(`${GITHUB_URL}/search/users?${params}`, {
-      headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
-      },
-    });
+    // const response = await fetch(`${GITHUB_URL}/search/user?${params}`, {
+    //   headers: {
+    //     Authorization: `token ${GITHUB_TOKEN}`,
+    //   },
+    // });
+    const response = await fetch(`${GITHUB_URL}/search/users?${params}`);
 
+    // destructure to get the items array in the data
     const { items } = await response.json();
     console.log(items);
     dispatch({
@@ -55,6 +58,9 @@ export const GithubProvider = ({ children }) => {
       },
     });
 
+    // Dont send Authorization token
+    // const response = await fetch(`${GITHUB_URL}/user?${login}`);
+
     if (response.status === 404) {
       window.location = '/notfound';
     } else {
@@ -65,6 +71,27 @@ export const GithubProvider = ({ children }) => {
         payload: data,
       });
     }
+  };
+
+  // const response = await fetch(`${GITHUB_URL}/search/user?${login}/repos`, {
+  //   headers: {
+  //     Authorization: `token ${GITHUB_TOKEN}`,
+  //   },
+  // });
+
+  // Get user Repos -- Remove Authorization token restriction
+  const getUserRepos = async (login) => {
+    console.log(`getUserRepos login : ${login}`);
+    setLoading();
+
+    const response = await fetch(`${GITHUB_URL}/search/users/${login}/repos`);
+
+    const { data } = await response.json();
+
+    dispatch({
+      type: 'GET_REPOS',
+      payload: data,
+    });
   };
 
   // Clear users from state
@@ -81,9 +108,11 @@ export const GithubProvider = ({ children }) => {
       value={{
         users: state.users,
         user: state.user,
+        repos: state.repos,
         loading: state.loading,
         searchUsers,
         clearUsers,
+        getUserRepos,
         getUser,
       }}
     >
