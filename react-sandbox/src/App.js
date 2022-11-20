@@ -1,8 +1,8 @@
-import UseRefExampl1 from './components/UseRefExampl1';
+import UseRefExample2 from './components/UseRefExample2';
 const App = () => {
   return (
     <div className="container mt-5">
-      <UseRefExampl1 />
+      <UseRefExample2 />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-const UseRefExampl1 = () => {
+const UseRefExample1 = () => {
   const inputRef = useRef();
   const paraRef = useRef();
 
@@ -28,4 +28,4 @@ const UseRefExampl1 = () => {
   );
 };
 
-export default UseRefExampl1;
+export default UseRefExample1;
