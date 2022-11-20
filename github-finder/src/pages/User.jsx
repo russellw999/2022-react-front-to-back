@@ -1,25 +1,28 @@
 import { Fragment, useEffect, useContext } from 'react';
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Spinner from '../components/layout/Spinner';
 import RepoList from '../components/repos/RepoList';
 import GithubContext from '../context/github/GithubContext';
+import { getUserAndRepos } from '../context/github/GithubActions';
+
 const User = () => {
   // const { getUser, user, loading, getUserRepos, repos } =
-  const { getUser, user, loading, repos } = useContext(GithubContext);
+  const { user, loading, repos, dispatch } = useContext(GithubContext);
 
   const params = useParams();
 
   console.log(params.login);
 
   useEffect(() => {
-    getUser(params.login);
-  }, [params.login]);
+    dispatch({ type: 'SET_LOADING' });
+    const getUserData = async () => {
+      const userData = await getUserAndRepos(params.login);
+      dispatch({ type: 'GET_USER_AND_REPOS', payload: userData });
+    };
 
-  if (loading) {
-    return <Spinner />;
-  }
+    getUserData();
+  }, [dispatch, params.login]);
 
   const {
     name,
@@ -38,11 +41,21 @@ const User = () => {
     hireable,
   } = user;
 
-  console.log(`User.jsx useEffect  user: ${user}`);
+  if (loading) {
+    return <Spinner />;
+  }
 
   // NOTE: check for valid url to users website
 
   const websiteUrl = blog?.startsWith('http') ? blog : 'https://' + blog;
+
+  // NOTE: code here has been fixed so that stats no longer show scroll bar on
+  // mobile / small devices
+  // https://www.udemy.com/course/react-front-to-back-2022/learn/lecture/29768968#questions/16902278
+
+  // NOTE: if you are having problems with the name and login showing at the top
+  // of the image then you need the className='flex-grow-0' on the <p> tag
+  // default styling on <p> in daisyUI now has flex-grow-1
 
   return (
     <Fragment>
@@ -121,7 +134,6 @@ const User = () => {
               )}
             </div>
           </div>
-          <RepoList />
         </div>
 
         <div className="w-full py-5 mb-6 rounded-lg shadow-md bg-base-100 stats">
@@ -167,6 +179,7 @@ const User = () => {
             </div>
           </div>
         </div>
+
         <RepoList repos={repos} />
       </div>
     </Fragment>
