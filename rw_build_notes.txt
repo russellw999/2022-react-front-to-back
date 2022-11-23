@@ -220,6 +220,8 @@ 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
 
  npx create-react-app   house-marketplace-main  --use-npm
 
+ npm i react-router-don firebase
+
  Firebase Config:   
 
      Project:  house-marketplace-app
@@ -227,7 +229,7 @@ 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
 
          nickname:   House Marketplace
 
-         
+
 
 
 
