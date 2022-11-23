@@ -214,6 +214,25 @@ Personal Access Token
 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
 
 
+===== house-marketplace   ch13
+
+   checkout techbase on YouTube
+
+ npx create-react-app   house-marketplace-main  --use-npm
+
+ Firebase Config:   
+
+     Project:  house-marketplace-app
+     Id:       house-marketplace-app-3d052
+
+         nickname:   House Marketplace
+
+         
+
+
+
+
+
 
 
 
